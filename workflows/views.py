@@ -31,6 +31,11 @@ class UpdateWorkFlowAPI(APIView):
     """
     serializer_class = UpdateWorkFlowSerializer
 
+    def get(self, request, workflowId):
+        data = Workflow.objects.filter(workflow_id=workflowId)
+        serialized_data = UpdateWorkFlowSerializer(data, many=True)
+        return Response(serialized_data.data)
+
     def put(self, request, workflowId):
         data = Workflow.objects.filter(workflow_id=workflowId)
         if not data:
