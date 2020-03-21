@@ -20,8 +20,8 @@ class WorkFlowsAPI(APIView):
     def post(self, request):
         wfs = WorkFlowSerializer(data=request.data)
         wfs.is_valid(raise_exception=True)
-        workflowId = wfs.create(wfs.validated_data)
-        response_data = {'workflowId': workflowId, 'status': 'pending', 'created_datetime': datetime.datetime.now()}
+        approvalId = wfs.create(wfs.validated_data)
+        response_data = {'workflowId': approvalId, 'status': 'pending', 'created_datetime': datetime.datetime.now()}
         return Response(response_data)
 
 
@@ -31,13 +31,13 @@ class UpdateWorkFlowAPI(APIView):
     """
     serializer_class = UpdateWorkFlowSerializer
 
-    def get(self, request, workflowId):
-        data = Workflow.objects.filter(workflow_id=workflowId)
+    def get(self, request, approvalId):
+        data = Workflow.objects.filter(approval_id=approvalId)
         serialized_data = UpdateWorkFlowSerializer(data, many=True)
         return Response(serialized_data.data)
 
-    def put(self, request, workflowId):
-        data = Workflow.objects.filter(workflow_id=workflowId)
+    def put(self, request, approvalId):
+        data = Workflow.objects.filter(approval_id=approvalId)
         if not data:
             return Response(status=404)
         wfs = UpdateWorkFlowSerializer(data=request.data)

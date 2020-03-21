@@ -3,6 +3,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('workflows/', views.WorkFlowsAPI.as_view(), name='workflows'),
-    path('workflows/<slug:workflowId>/', views.UpdateWorkFlowAPI.as_view(), name='workflow-status-update')
+    path('approvals/', views.WorkFlowsAPI.as_view(), name='approvals'),
+    path('approvals/<slug:approvalId>/', views.UpdateWorkFlowAPI.as_view(), name='approval-status-update')
 ]

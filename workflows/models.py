@@ -8,7 +8,7 @@ class Workflow(models.Model):
         ('approved', 'APPROVED'),
         ('rejected', 'REJECTED')
     )
-    workflow_id = models.AutoField(primary_key=True)
+    approval_id = models.AutoField(primary_key=True)
     customer_name = models.CharField(max_length=60)
     description = models.CharField(max_length=60)
     amount = models.DecimalField(max_digits=5, decimal_places=2)

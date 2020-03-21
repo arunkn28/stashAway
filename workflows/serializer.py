@@ -11,7 +11,7 @@ class WorkFlowSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         workflowobj = Workflow(**validated_data)
         workflowobj.save()
-        return workflowobj.workflow_id
+        return workflowobj.approval_id
 
 
 class UpdateWorkFlowSerializer(serializers.ModelSerializer):
