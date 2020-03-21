@@ -2,7 +2,7 @@ from datetime import datetime
 from django.db import models
 
 
-class Workflow(models.Model):
+class Approval(models.Model):
     STATUS = (
         ('pending', 'PENDING'),
         ('approved', 'APPROVED'),

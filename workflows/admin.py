@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import Workflow
+from .models import Approval
 
-admin.site.register(Workflow)
+admin.site.register(Approval)

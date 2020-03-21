@@ -1,22 +1,22 @@
 import datetime
 from rest_framework import serializers
-from .models import Workflow
+from .models import Approval
 
 
-class WorkFlowSerializer(serializers.ModelSerializer):
+class ApprovalSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Workflow
+        model = Approval
         exclude = ['modified_datetime', 'approved_by', 'created_datetime', 'status']
 
     def create(self, validated_data):
-        workflowobj = Workflow(**validated_data)
+        workflowobj = Approval(**validated_data)
         workflowobj.save()
         return workflowobj.approval_id
 
 
-class UpdateWorkFlowSerializer(serializers.ModelSerializer):
+class UpdateApprovalSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Workflow
+        model = Approval
         fields = ['status', 'approved_by', 'modified_datetime']
         read_only_fields = ['modified_datetime']
 
